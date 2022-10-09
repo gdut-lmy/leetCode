@@ -3,4 +3,4 @@ project(leetCode)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(21.MergeTwoSortedLists)
+add_subdirectory(singleList)

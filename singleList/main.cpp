@@ -34,12 +34,13 @@ int main() {
 
     Solution s;
 
-    ListNode *s1 = create_linkedlist({1, 3, 5, 6});
+    ListNode *s1 = create_linkedlist({1, 4, 3, 2, 5, 2});
 
     ListNode *s2 = create_linkedlist({2, 4, 7, 8});
 
-    ListNode *res = s.mergeTwoLists(s1, s2);
+    //ListNode *res = s.mergeTwoLists(s1, s2);
 
+    ListNode *res = s.partition(s1, 3);
     printList(res);
 
 
