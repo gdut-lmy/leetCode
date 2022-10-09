@@ -5,6 +5,11 @@
 #ifndef LEETCODE_SOLUTION_H
 #define LEETCODE_SOLUTION_H
 
+#include <vector>
+#include <queue>
+
+using namespace std;
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -17,6 +22,12 @@ struct ListNode {
 };
 
 class Solution {
+    struct tmp {
+        bool operator()(ListNode *a, ListNode *b) {
+            return a->val > b->val;
+        }
+    };
+
 public:
     //21.MergeTwoSortedLists
     ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
@@ -46,6 +57,7 @@ public:
 
         return dummy->next;
     }
+
     //86.分隔链表
     ListNode *partition(ListNode *head, int x) {
         ListNode *dummy1 = new ListNode(-1);
@@ -66,6 +78,27 @@ public:
         }
         p1->next = dummy2->next;
         return dummy1->next;
+    }
+
+    //23.合并K个升序链表
+    ListNode *mergeKLists(vector<ListNode *> &lists) {
+        if (lists.size() == 0) return nullptr;
+        ListNode *dummy = new ListNode(-1);
+        ListNode *p = dummy;
+        priority_queue<ListNode *, vector<ListNode *>, tmp> pq;
+        for (ListNode *head: lists) {
+            if (head != nullptr)
+                pq.push(head);
+        }
+        while (!pq.empty()) {
+            ListNode *tmp = pq.top();
+            pq.pop();
+            p->next = tmp;
+            if (tmp->next != nullptr)
+                pq.push(tmp->next);
+            p = p->next;
+        }
+        return dummy->next;
     }
 };
 

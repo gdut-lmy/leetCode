@@ -36,12 +36,16 @@ int main() {
 
     ListNode *s1 = create_linkedlist({1, 4, 3, 2, 5, 2});
 
+    vector<ListNode *> test = {create_linkedlist({1, 4, 6, 7}), create_linkedlist({5, 7, 9, 10}),
+                               create_linkedlist({3, 5, 7, 9})};
+
     ListNode *s2 = create_linkedlist({2, 4, 7, 8});
 
     //ListNode *res = s.mergeTwoLists(s1, s2);
 
     ListNode *res = s.partition(s1, 3);
-    printList(res);
+    ListNode *res23 = s.mergeKLists(test);
+    printList(res23);
 
 
     return 0;
